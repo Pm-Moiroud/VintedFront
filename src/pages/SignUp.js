@@ -25,7 +25,6 @@ const Signup = ({ token, setToken }) => {
           {
             email: email,
             username: username,
-            phone: "0607080910",
             password: password,
           }
         );
