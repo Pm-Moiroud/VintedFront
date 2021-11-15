@@ -1,0 +1,25 @@
+body {
+  background-color: grey;
+}
+
+.container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+section {
+  background-color: white;
+  border: 1px black solid;
+}
+
+.section2-title div,
+.section3-details div,
+.input-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+form input {
+  width: 50%;
+  height: 50px;
+}

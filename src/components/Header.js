@@ -12,6 +12,14 @@ const Header = ({ setParams, token, setToken }) => {
   const [isToogle, setIsToogle] = useState(false);
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    if (token) {
+      navigate("/publish");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="sticky">
       <div className="header-container container">
@@ -40,7 +48,7 @@ const Header = ({ setParams, token, setToken }) => {
               onClick={() => {
                 setToken(null);
                 Cookies.remove("Token");
-                navigate("/");
+                navigate("/home");
               }}
             >
               Se déconnecter
@@ -56,9 +64,10 @@ const Header = ({ setParams, token, setToken }) => {
             </div>
           )}
           <div className="buttons-container"></div>
-          <Link to="/signup">
-            <button className="sell-button">Vends maintenant</button>
-          </Link>
+
+          <button onClick={handleClick} className="sell-button">
+            Vends maintenant
+          </button>
         </div>
       </div>
       <div className="second-header-lign">

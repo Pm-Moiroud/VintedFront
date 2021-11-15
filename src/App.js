@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
+import Publish from "./pages/Publish";
 
 function App() {
   const [token, setToken] = useState();
@@ -27,6 +28,7 @@ function App() {
           path="signup"
           element={<Signup token={token} setToken={setToken} />}
         />
+        <Route path="publish" element={<Publish token={token} />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
