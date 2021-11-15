@@ -5,7 +5,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp";
 import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
 import Publish from "./pages/Publish";

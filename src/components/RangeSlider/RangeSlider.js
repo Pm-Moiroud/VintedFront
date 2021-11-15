@@ -49,6 +49,7 @@ const Slider = ({ setParams }) => {
                 height: "5px",
                 width: "100%",
                 borderRadius: "4px",
+
                 background: getTrackBackground({
                   values,
                   colors: ["#ccc", "#09aeb6", "#ccc"],

@@ -1,7 +1,5 @@
 import "./preview.css";
 
-import { useState } from "react";
-
 const Preview = ({ file, setFile }) => {
   // This function will be triggered when the file field change
   const imageChange = (e) => {

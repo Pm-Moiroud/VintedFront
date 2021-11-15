@@ -61,12 +61,12 @@
 }
 
 .Login-btn,
-.signup-btn,
-.sell-button {
+.signup-btn {
   border-radius: 4px;
   cursor: pointer;
-  height: 160%;
+  height: 40px;
   width: 150px;
+  margin-top: 10px;
 }
 
 .signup-btn {
@@ -84,6 +84,11 @@
   color: white;
   margin-left: 100px;
   border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .login-signup {
@@ -93,7 +98,7 @@
 .second-header-lign {
   display: flex;
   flex-direction: row;
-  margin-left: 400px;
+  margin-left: 500px;
   width: 50%;
   justify-content: space-between;
   align-items: center;
@@ -105,6 +110,8 @@
   width: 150px;
   border: 1px solid var(--vintedcolor);
   color: var(--vintedcolor);
+  height: 40px;
+  margin-top: 10px;
 }
 
 .switch-sort {
