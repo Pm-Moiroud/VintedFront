@@ -2,19 +2,17 @@ import "./preview.css";
 
 import { useState } from "react";
 
-const Preview = () => {
-  const [selectedImage, setSelectedImage] = useState();
-
+const Preview = ({ file, setFile }) => {
   // This function will be triggered when the file field change
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
+      setFile(e.target.files[0]);
     }
   };
 
   // This function will be triggered when the "Remove This Image" button is clicked
   const removeSelectedImage = () => {
-    setSelectedImage();
+    setFile();
   };
   // Just some styles
   const styles = {
@@ -45,12 +43,12 @@ const Preview = () => {
   };
   return (
     <>
-      {!selectedImage ? (
+      {!file ? (
         <input accept="image/*" type="file" onChange={imageChange} />
       ) : (
         <div style={styles.preview}>
           <img
-            src={URL.createObjectURL(selectedImage)}
+            src={URL.createObjectURL(file)}
             style={styles.image}
             alt="Thumb"
           />

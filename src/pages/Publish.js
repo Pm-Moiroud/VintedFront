@@ -2,6 +2,7 @@ import "./publish.css";
 import Preview from "../components/Preview/Preview";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Publish = ({ token }) => {
   const [file, setFile] = useState();
@@ -13,6 +14,9 @@ const Publish = ({ token }) => {
   const [size, setSize] = useState();
   const [color, setColor] = useState();
   const [price, setPrice] = useState();
+  const [id, setId] = useState();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     const formData = new FormData();
@@ -40,9 +44,12 @@ const Publish = ({ token }) => {
           }
         );
         console.log(response.data);
+        setId(response.data._id);
       };
-
       fetchData();
+      if (id) {
+        navigate(`/offer/${id}`);
+      }
     } catch (error) {
       console.log(error.response.message);
     }
@@ -52,7 +59,7 @@ const Publish = ({ token }) => {
     <form className="container" onSubmit={handleSubmit}>
       <h1>Vends ton article</h1>
       <section className="section1-photo">
-        <Preview selectedImage={file} setSelectedImage={setFile} />
+        <Preview file={file} setFile={setFile} />
       </section>
       <section className="section2-title">
         <div>

@@ -48,7 +48,7 @@ const Header = ({ setParams, token, setToken }) => {
               onClick={() => {
                 setToken(null);
                 Cookies.remove("Token");
-                navigate("/home");
+                navigate("/");
               }}
             >
               Se déconnecter
