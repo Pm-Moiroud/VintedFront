@@ -2,20 +2,27 @@ import Content from "../components/Content";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({ searchParams }) => {
   const [offers, setOffers] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      const queryString = Object.keys(searchParams)
+        .filter((key) => !!searchParams[key])
+        .map((key) => key + "=" + searchParams[key])
+        .join("&");
+
       const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
+        `https://lereacteur-vinted-api.herokuapp.com/offers?${queryString}`
       );
-      setOffers(response.data);
+      /* use les query. Si query, */
+      const originalsOffers = response.data;
+      setOffers(originalsOffers);
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   return isLoading ? (
     <span>En cours de chargement... </span>

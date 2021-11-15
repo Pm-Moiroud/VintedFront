@@ -1,10 +1,9 @@
-import "./signup.css";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import "./signup.css";
 
 const Signup = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
@@ -16,10 +15,10 @@ const Signup = ({ token, setToken }) => {
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    try {
-      event.preventDefault();
+    event.preventDefault();
 
-      const fetchData = async () => {
+    const fetchData = async () => {
+      try {
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/signup",
           {
@@ -30,26 +29,24 @@ const Signup = ({ token, setToken }) => {
         );
 
         setToken(response.data.token);
-      };
-
-      fetchData();
-      if (token) {
-        Cookies.set("Token", token, { expires: 30 });
-      } else {
-        Cookies.remove("Token");
+      } catch (error) {
+        if (error.response.status === 409) {
+          setErrorMessage("Mauvais email et/ou mot de passe");
+        }
       }
+
+      /*     navigate("/"); */
+    };
+    fetchData();
+    if (token) {
+      setErrorMessage("");
+      Cookies.set("Token", token, { expires: 30 });
       navigate("/");
-    } catch (error) {
-      console.log(error.response.status);
-
-      if (error.response.status === 409) {
-        console.log(error.response.status);
-        setErrorMessage("Mauvais email et/ou mot de passe");
-      } else {
-        navigate("/");
-      }
+    } else {
+      Cookies.remove("Token");
     }
   };
+
   return (
     <div className="form-container">
       <h1>S'incrire</h1>
@@ -93,5 +90,4 @@ const Signup = ({ token, setToken }) => {
     </div>
   );
 };
-
 export default Signup;

@@ -1,8 +1,17 @@
 import vintedLogo from "../assets/images/vintedLogo.svg";
 import { BiSearch } from "react-icons/bi";
+import ToogleButton from "./ToogleButton/ToogleButton";
+import RangeSlider from "./RangeSlider/RangeSlider";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
-const Header = () => {
+import Cookies from "js-cookie";
+
+const Header = ({ setParams, token, setToken }) => {
+  const [isToogle, setIsToogle] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <div className="sticky">
       <div className="header-container container">
@@ -11,25 +20,66 @@ const Header = () => {
             <img className="vinted-logo" src={vintedLogo} alt="not found" />
           </Link>
           <BiSearch className="loop" />
+
           <input
             className="input-header"
+            onChange={(e) =>
+              setParams((prevParams) => ({
+                ...prevParams,
+                title: e.target.value,
+              }))
+            }
+            placeholder="Chercher des articles"
             type="text"
-            placeholder="Rechercher des articles"
           />
         </div>
         <div className="signup-btns">
-          <div className="buttons-container">
-            <Link to="/SignUp">
-              <button className="signup-btn">S'inscrire</button>
-            </Link>
-            <Link to="/login">
-              <button className="Login-btn">Se connecter</button>
-            </Link>
-          </div>
+          {token ? (
+            <button
+              className="modale-header"
+              onClick={() => {
+                setToken(null);
+                Cookies.remove("Token");
+                navigate("/");
+              }}
+            >
+              Se déconnecter
+            </button>
+          ) : (
+            <div className="login-signup">
+              <Link to="/SignUp">
+                <button className="signup-btn">S'inscrire</button>
+              </Link>
+              <Link to="/login">
+                <button className="Login-btn">Se connecter</button>
+              </Link>
+            </div>
+          )}
+          <div className="buttons-container"></div>
           <Link to="/signup">
             <button className="sell-button">Vends maintenant</button>
           </Link>
         </div>
+      </div>
+      <div className="second-header-lign">
+        <ToogleButton
+          rounded={true}
+          isToogle={isToogle}
+          onToogle={() => {
+            setIsToogle(!isToogle);
+            if (isToogle === false) {
+              setParams((prevParams) => ({
+                ...prevParams,
+                sort: "price-asc",
+              }));
+            } else {
+              setParams({});
+            }
+          }}
+        />
+        <span className="switch-sort">Trier par prix croissant</span>
+
+        <RangeSlider setParams={setParams} />
       </div>
     </div>
   );

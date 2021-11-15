@@ -1,7 +1,7 @@
 import Item from "./Item";
 import { Link } from "react-router-dom";
 
-const Items = ({ offers, setOffers }) => {
+const Items = ({ offers }) => {
   return (
     <div className="content">
       {offers.offers.map((offer, index) => {

@@ -1,9 +1,10 @@
-import "./login.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Cookies from "js-cookie";
+
+import "./login.css";
 
 const Login = ({ token, setToken }) => {
   const [email, setEmail] = useState("");
@@ -27,24 +28,18 @@ const Login = ({ token, setToken }) => {
         setToken(response.data.token);
       };
       fetchData();
-
-      if (token) {
-        Cookies.set("Token", token, { expires: 30 });
-      } else {
-        Cookies.remove("Token");
-      }
-      navigate("/");
     } catch (error) {
-      if (error.response.status === 409) {
+      if (error.response.status === 400) {
         setErrorMessage(
           "Impossible de trouver un compte correspondant à cette adresse e-mail"
         );
-      } else {
-        navigate("/");
       }
     }
   };
-
+  if (token) {
+    Cookies.set("Token", token, { expires: 30 });
+    navigate("/");
+  }
   return (
     <div className="form-container">
       <h1>Se connecter</h1>
@@ -60,7 +55,7 @@ const Login = ({ token, setToken }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <span>{errorMessage}</span>
+        {errorMessage ? <span>{errorMessage}</span> : null}
         <button>Se connecter</button>
         <a href="https://www.lereacteur.io/" className="need-help ">
           Besoin d'aide ? Cliquez ici

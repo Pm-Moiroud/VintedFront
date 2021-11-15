@@ -1,7 +1,7 @@
 import Items from "./Items";
 import Banner from "./Banner";
 
-const Content = ({ offers, setOffers }) => {
+const Content = ({ offers }) => {
   return (
     <>
       <div>
@@ -9,7 +9,7 @@ const Content = ({ offers, setOffers }) => {
       </div>
       <h3 className="fil-actu">Fil d'actu</h3>
       <div className="content">
-        <Items offers={offers} setOffers={setOffers} />
+        <Items offers={offers} />
       </div>
     </>
   );
