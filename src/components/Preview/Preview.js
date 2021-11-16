@@ -43,7 +43,7 @@ const Preview = ({ file, setFile }) => {
       {!file ? (
         <>
           <label for="files" class="btn-add-file">
-            Ajoute une photo
+            Clique ici pour ajouter une photo
           </label>
           <input
             id="files"

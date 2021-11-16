@@ -14,6 +14,7 @@ import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
 import Publish from "./pages/Publish";
 import Payement from "./pages/Payement";
+import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("Token") || null);
@@ -23,9 +24,13 @@ function App() {
   return (
     <Router>
       <Header token={token} setToken={setToken} setParams={setSearchParams} />
+
       <Routes>
-        <Route path="/" element={<Home searchParams={searchParams} />} />
-        <Route path="offer/:id" element={<Offer />} />
+        <Route
+          path="/"
+          element={<Home searchParams={searchParams} token={token} />}
+        />
+        <Route path="offer/:id" element={<Offer token={token} />} />
         <Route
           path="login"
           element={<Login token={token} setToken={setToken} />}
@@ -47,6 +52,7 @@ function App() {
 
         <Route path="*" element={<NoMatch />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

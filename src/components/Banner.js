@@ -1,12 +1,23 @@
 import bannerImage from "../assets/images/banner-vinted.jpg";
 import banner from "../assets/images/banner.svg";
 
-const Banner = () => {
+import { useNavigate } from "react-router";
+
+const Banner = ({ token }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (token) {
+      navigate("/publish");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div className="container-banner">
       <div className="di-banner">
         <h1>Prêts à faire du tri dans vos placards ?</h1>
-        <button>Vends maintenant</button>
+        <button onClick={handleClick}>Vends maintenant</button>
         <a href="https://www.vinted.fr/how_it_works">
           <br /> Découvrir comment ça marche
         </a>

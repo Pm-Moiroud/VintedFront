@@ -137,7 +137,7 @@ const Publish = ({ token }) => {
             </div>
           </section>
 
-          <button>Ajouter</button>
+          <button className="publish-button">Ajouter</button>
         </form>
       </div>
     </>

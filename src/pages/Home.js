@@ -2,7 +2,7 @@ import Content from "../components/Content";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = ({ searchParams }) => {
+const Home = ({ searchParams, token }) => {
   const [offers, setOffers] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +28,7 @@ const Home = ({ searchParams }) => {
   ) : (
     <>
       <div>
-        <Content offers={offers} setOffers={setOffers} />
+        <Content offers={offers} setOffers={setOffers} token={token} />
       </div>
     </>
   );

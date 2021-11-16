@@ -1,19 +1,23 @@
 import "./offer.css";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const [offer, setOffer] = useState();
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState();
   const [userId, setUserId] = useState("");
 
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleClick = () => {
+    navigate("/login");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,12 +71,22 @@ const Offer = () => {
               <p className="offer-username">{offer.owner.account.username}</p>
             </div>
 
-            <Link
-              to="/payement"
-              state={{ title: { title }, price: { price }, userId: { userId } }}
-            >
-              <button style={{ width: "100%" }}>Acheter</button>
-            </Link>
+            {token ? (
+              <Link
+                to="/payement"
+                state={{
+                  title: { title },
+                  price: { price },
+                  userId: { userId },
+                }}
+              >
+                <button style={{ width: "100%" }}>Acheter</button>
+              </Link>
+            ) : (
+              <button onClick={handleClick} style={{ width: "100%" }}>
+                Acheter
+              </button>
+            )}
           </div>
         </section>
       </div>
