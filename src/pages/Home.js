@@ -16,7 +16,6 @@ const Home = ({ searchParams }) => {
       const response = await axios.get(
         `https://lereacteur-vinted-api.herokuapp.com/offers?${queryString}`
       );
-      /* use les query. Si query, */
       const originalsOffers = response.data;
       setOffers(originalsOffers);
       setIsLoading(false);

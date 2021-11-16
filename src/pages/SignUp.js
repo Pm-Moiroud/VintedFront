@@ -34,8 +34,6 @@ const Signup = ({ token, setToken }) => {
           setErrorMessage("Mauvais email et/ou mot de passe");
         }
       }
-
-      /*     navigate("/"); */
     };
     fetchData();
     if (token) {
