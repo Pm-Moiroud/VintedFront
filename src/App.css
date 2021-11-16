@@ -10,6 +10,8 @@
   text-decoration: none;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
 }
 
 /* First modification of the header */
@@ -21,11 +23,11 @@
 }
 
 .header-container {
-  height: 70px;
   margin: 0 auto;
+  height: 70px;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 1200px;
   padding-bottom: 10px;
 }
 
@@ -77,6 +79,7 @@
 .Login-btn {
   border: 1px solid var(--vintedcolor);
   color: var(--vintedcolor);
+  font-size: 14px;
 }
 
 .sell-button {
@@ -89,33 +92,35 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  font-size: 14px;
 }
 
 .login-signup {
   display: flex;
 }
 
-.second-header-lign {
-  display: flex;
-  flex-direction: row;
-  margin-left: 500px;
-  width: 50%;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .modale-header {
   border-radius: 4px;
   cursor: pointer;
   width: 150px;
-  border: 1px solid var(--vintedcolor);
-  color: var(--vintedcolor);
+  font-size: 14px;
+  background-color: red;
+  color: white;
   height: 40px;
   margin-top: 10px;
+  border: none;
+}
+
+.second-header-lign {
+  position: sticky;
+  height: 70px;
+  width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .switch-sort {
-  margin-right: 350px;
   font-size: 12px;
 }
 
@@ -130,7 +135,7 @@
 
 .banner-img {
   height: 100%;
-  width: 100%;
+  width: calc(100% - 2px);
 }
 
 .fil-actu {
@@ -141,9 +146,10 @@
 
 .banner-wreck {
   position: absolute;
-  top: 655px;
-  left: 50vw;
-  width: 49.1vw;
+  top: 685px;
+  left: 39vw;
+  width: 60vw;
+  height: 100px;
 }
 
 .di-banner {
@@ -154,6 +160,7 @@
   left: 365px;
   top: 230px;
   padding: 25px;
+  border-radius: 5px;
 }
 
 .di-banner h1 {
@@ -213,5 +220,3 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* début modification Offer*/

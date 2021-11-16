@@ -1,18 +1,14 @@
-import "./preview.css";
-
 const Preview = ({ file, setFile }) => {
-  // This function will be triggered when the file field change
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(e.target.files[0]);
     }
   };
 
-  // This function will be triggered when the "Remove This Image" button is clicked
   const removeSelectedImage = () => {
     setFile();
   };
-  // Just some styles
+
   const styles = {
     container: {
       display: "flex",
@@ -22,13 +18,16 @@ const Preview = ({ file, setFile }) => {
       paddingTop: 50,
     },
     preview: {
-      marginTop: 50,
+      marginTop: 30,
+      alignItems: "center",
       display: "flex",
       flexDirection: "column",
+      width: "100%",
     },
     image: { maxWidth: "25%", maxHeight: 200 },
     delete: {
       cursor: "pointer",
+      marginLeft: "100px",
       color: "white",
       fontSize: "20px",
       border: "none",
@@ -42,7 +41,18 @@ const Preview = ({ file, setFile }) => {
   return (
     <>
       {!file ? (
-        <input accept="image/*" type="file" onChange={imageChange} />
+        <>
+          <label for="files" class="btn-add-file">
+            Ajoute une photo
+          </label>
+          <input
+            id="files"
+            style={{ display: "none" }}
+            accept="image/*"
+            type="file"
+            onChange={imageChange}
+          />
+        </>
       ) : (
         <div style={styles.preview}>
           <img

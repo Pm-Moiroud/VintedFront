@@ -1,0 +1,33 @@
+.social {
+  position: absolute;
+  left: 60%;
+}
+
+.social-medias {
+  position: relative;
+  left: 150px;
+  top: -5px;
+  font-size: 12px;
+}
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
+}
+
+a.social {
+  margin: 15px 15px;
+  transition: transform 250ms;
+  display: inline-block;
+  position: relative;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+}

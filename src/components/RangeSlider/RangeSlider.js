@@ -14,9 +14,21 @@ const Slider = ({ setParams }) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        flexWrap: "wrap",
+        position: "absolute",
+        left: "15vw",
       }}
     >
+      <span
+        style={{
+          position: "absolute",
+          left: "15px",
+          top: "25px",
+
+          fontSize: "12px",
+        }}
+      >
+        Prix entre :
+      </span>
       <Range
         values={values}
         step={STEP}
@@ -39,14 +51,15 @@ const Slider = ({ setParams }) => {
               ...props.style,
               height: "36px",
               display: "flex",
-              width: "400px",
+              width: "300px",
               marginTop: "15px",
+              marginLeft: "100px",
             }}
           >
             <div
               ref={props.ref}
               style={{
-                height: "5px",
+                height: "2px",
                 width: "100%",
                 borderRadius: "4px",
 
@@ -68,9 +81,9 @@ const Slider = ({ setParams }) => {
             {...props}
             style={{
               ...props.style,
-              height: "25px",
-              width: "25px",
-              borderRadius: "4px",
+              height: "20px",
+              width: "20px",
+              borderRadius: "50%",
               backgroundColor: "#FFF",
               display: "flex",
               justifyContent: "center",

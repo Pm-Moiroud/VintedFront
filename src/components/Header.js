@@ -1,7 +1,7 @@
 import vintedLogo from "../assets/images/vintedLogo.svg";
 import { BiSearch } from "react-icons/bi";
-import ToogleButton from "./ToogleButton/ToogleButton";
-import RangeSlider from "./RangeSlider/RangeSlider";
+
+import ModaleFilter from "./ModaleFilter";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useState } from "react";
@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 
 const Header = ({ setParams, token, setToken }) => {
   const [isToogle, setIsToogle] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,7 +23,7 @@ const Header = ({ setParams, token, setToken }) => {
 
   return (
     <div className="sticky">
-      <div className="header-container container">
+      <div className="header-container ">
         <div className="loop-container">
           <Link to="/">
             <img className="vinted-logo" src={vintedLogo} alt="not found" />
@@ -63,33 +64,17 @@ const Header = ({ setParams, token, setToken }) => {
               </Link>
             </div>
           )}
-          <div className="buttons-container"></div>
 
           <button onClick={handleClick} className="sell-button">
             Vends maintenant
           </button>
         </div>
       </div>
-      <div className="second-header-lign">
-        <ToogleButton
-          rounded={true}
-          isToogle={isToogle}
-          onToogle={() => {
-            setIsToogle(!isToogle);
-            if (isToogle === false) {
-              setParams((prevParams) => ({
-                ...prevParams,
-                sort: "price-asc",
-              }));
-            } else {
-              setParams({});
-            }
-          }}
-        />
-        <span className="switch-sort">Trier par prix croissant</span>
-
-        <RangeSlider setParams={setParams} />
-      </div>
+      <ModaleFilter
+        isToogle={isToogle}
+        setIsToogle={setIsToogle}
+        setParams={setParams}
+      />
     </div>
   );
 };

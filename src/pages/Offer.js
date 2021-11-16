@@ -3,9 +3,16 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdAccountCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 const Offer = () => {
-  const { id } = useParams();
   const [offer, setOffer] = useState();
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState();
+  const [userId, setUserId] = useState("");
+
+  const { id } = useParams();
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,6 +22,9 @@ const Offer = () => {
       );
       setOffer(response.data);
       setIsLoading(false);
+      setTitle(response.data.product_name);
+      setPrice(response.data.product_price);
+      setUserId(response.data.owner._id);
     };
     fetchData();
   }, [id]);
@@ -30,7 +40,6 @@ const Offer = () => {
           <h4>{offer.product_price} €</h4>
           <div className="list">
             <ul>
-              {/* COMMENTAIRES */}
               {offer.product_details.map((elem, index) => {
                 const keys = Object.keys(elem);
                 return (
@@ -58,7 +67,12 @@ const Offer = () => {
               <p className="offer-username">{offer.owner.account.username}</p>
             </div>
 
-            <button>Acheter</button>
+            <Link
+              to="/payement"
+              state={{ title: { title }, price: { price }, userId: { userId } }}
+            >
+              <button style={{ width: "100%" }}>Acheter</button>
+            </Link>
           </div>
         </section>
       </div>

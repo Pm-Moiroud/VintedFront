@@ -43,7 +43,6 @@ const Publish = ({ token }) => {
             },
           }
         );
-        console.log(response.data);
         setId(response.data._id);
       };
       fetchData();
@@ -56,80 +55,92 @@ const Publish = ({ token }) => {
   };
 
   return (
-    <form className="container" onSubmit={handleSubmit}>
-      <h1>Vends ton article</h1>
-      <section className="section1-photo">
-        <Preview file={file} setFile={setFile} />
-      </section>
-      <section className="section2-title">
-        <div>
-          <h2>Titre</h2>
-          <input
-            onChange={(event) => setTitle(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <h2>Décris ton article</h2>
-          <input
-            onChange={(event) => setDescription(event.target.value)}
-            type="text"
-          />
-        </div>
-      </section>
-      <section className="section3-details">
-        <div>
-          <h2>Marque</h2>
-          <input
-            onChange={(event) => setBrand(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <h2>Taille</h2>
-          <input
-            onChange={(event) => setSize(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <h2>Couleur</h2>
-          <input
-            onChange={(event) => setColor(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <h2>Etat</h2>
-          <input
-            onChange={(event) => setCondition(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <h2>Lieu</h2>
-          <input
-            onChange={(event) => setCity(event.target.value)}
-            type="text"
-          />
-        </div>
-      </section>
-      <section className="section4-price">
-        <div className="input-price">
-          <h2>Prix</h2>
-          <input
-            onChange={(event) => setPrice(event.target.value)}
-            type="text"
-          />
-        </div>
-        <div>
-          <input type="checkbox" />
-          <span>Je suis intéressé(e) par les échanges</span>
-        </div>
-      </section>
+    <>
+      <div style={{ backgroundColor: "#EBEDEE" }}>
+        <form className="container publish-form" onSubmit={handleSubmit}>
+          <h1 style={{ paddingTop: "20px" }}>Vends ton article</h1>
+          <section className="section1-photo">
+            <Preview file={file} setFile={setFile} />
+          </section>
+          <section className="section2-title">
+            <div>
+              <h2>Titre</h2>
+              <input
+                onChange={(event) => setTitle(event.target.value)}
+                type="text"
+                placeholder="ex: Chemise Sézane verte"
+              />
+            </div>
+            <div>
+              <h2>Décris ton article</h2>
+              <input
+                onChange={(event) => setDescription(event.target.value)}
+                type="text"
+                placeholder="ex: porté quelquefois, taille correctement"
+              />
+            </div>
+          </section>
+          <section className="section3-details">
+            <div>
+              <h2>Marque</h2>
+              <input
+                onChange={(event) => setBrand(event.target.value)}
+                type="text"
+                placeholder="ex: Zara"
+              />
+            </div>
+            <div>
+              <h2>Taille</h2>
+              <input
+                onChange={(event) => setSize(event.target.value)}
+                type="text"
+                placeholder="ex: L / 40 / 12"
+              />
+            </div>
+            <div>
+              <h2>Couleur</h2>
+              <input
+                onChange={(event) => setColor(event.target.value)}
+                type="text"
+                placeholder="ex: Fushia"
+              />
+            </div>
+            <div>
+              <h2>Etat</h2>
+              <input
+                onChange={(event) => setCondition(event.target.value)}
+                type="text"
+                placeholder="ex: Neuf avec étiquette"
+              />
+            </div>
+            <div>
+              <h2>Lieu</h2>
+              <input
+                onChange={(event) => setCity(event.target.value)}
+                type="text"
+                placeholder="ex: Paris"
+              />
+            </div>
+          </section>
+          <section className="section4-price">
+            <div className="input-price">
+              <h2>Prix</h2>
+              <input
+                onChange={(event) => setPrice(event.target.value)}
+                type="text"
+                placeholder="ex: 50,00 €"
+              />
+            </div>
+            <div classname="checkbox-interest">
+              <input type="checkbox" />
+              <span>Je suis intéressé(e) par les échanges</span>
+            </div>
+          </section>
 
-      <button>Ajouter</button>
-    </form>
+          <button>Ajouter</button>
+        </form>
+      </div>
+    </>
   );
 };
 

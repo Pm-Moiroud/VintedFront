@@ -3,9 +3,23 @@
   margin: 0 auto;
 }
 
-section {
+.publish-form section {
   background-color: white;
-  border: 1px black solid;
+  border: 1px EBEDEE solid;
+  margin: 25px 0 10px 0;
+  padding: 10px 20px;
+}
+
+.publish-form h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.section1-photo {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section2-title div,
@@ -13,9 +27,21 @@ section {
 .input-price {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-form input {
+.publish-form input:not(:first-child) {
   width: 50%;
-  height: 50px;
+  height: 60px;
+  margin-bottom: 5px;
+  border: none;
+}
+
+.publish-form input:focus {
+  outline: none;
+}
+
+.checkbox-interest input {
+  height: 10px;
+  width: 10px;
 }
